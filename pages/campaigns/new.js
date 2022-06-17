@@ -15,10 +15,9 @@ class CampaignNew extends Component{
   onSubmit = async (event) =>{
     event.preventDefault();
     this.setState({loading : true, errorMessage : ''});
-    //window.ethereum.enable();
+    window.ethereum.enable();
     try{
       const accounts = await web3.eth.getAccounts();
-
       await factory.methods.createCampaign(this.state.minimumContribution)
                     .send({
                       from : accounts[0]
